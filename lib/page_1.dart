@@ -1,5 +1,6 @@
 import 'package:ble_testing/custom_outlined_button.dart';
 import 'package:ble_testing/home_page.dart';
+import 'package:ble_testing/wifi_module.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,9 +28,9 @@ class Page1 extends StatelessWidget {
             ),
             RichText(
               textAlign: TextAlign.justify,
-              text: new TextSpan(
+              text: TextSpan(
                 children: <TextSpan>[
-                  new TextSpan(
+                  TextSpan(
                       text: 'Mediante el uso del señales Bluetooth y Wi-Fi  de tú telefono podemos calcular ',
                     style: GoogleFonts.roboto(
                       fontSize: 16,
@@ -37,7 +38,7 @@ class Page1 extends StatelessWidget {
                       color: Colors.black
                     )
                   ),
-                  new TextSpan(
+                  TextSpan(
                       text: 'anonímamente un número estimado de las personas que están cerca a tí. ',
                       style: GoogleFonts.roboto(
                           fontSize: 16,
@@ -45,7 +46,7 @@ class Page1 extends StatelessWidget {
                           color: Colors.black
                       )
                   ),
-                  new TextSpan(
+                  TextSpan(
                       text: 'De igual manera nos ayudarás controlar los aforos del campus.',
                       style: GoogleFonts.roboto(
                           fontSize: 16,
@@ -75,15 +76,28 @@ class Page1 extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(left: 5),
-                    child: CustomOutlinedButton(
-                      onPressed: (){
-                        Get.to(HomePage());
-                      },
-                      text: 'CONTINUAR',
-                      isFilled: true,
-                      color: Color.fromARGB(255, 108, 193, 144),
-                      textColor: Colors.white,
-                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        IconButton(
+                            onPressed: (){
+                              Get.to(HomePage());
+                            },
+                            icon: const Icon(Icons.bluetooth,
+                              color: Colors.blueAccent,
+                            )
+                        ),
+                        IconButton(
+                            onPressed: (){
+                              Get.to(WifiModule());
+                            },
+                            icon: const Icon(
+                                Icons.wifi,
+                              color: Color.fromARGB(255, 53, 140, 151),
+                            )
+                        )
+                      ],
+                    )
                   ),
                 ),
               ],
